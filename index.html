@@ -34,44 +34,86 @@
     }
 
     /* ---------- NAV ---------- */
-nav {
+/* Navbar base */
+.navbar {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(10px);
+  background: #f8fafc;
   z-index: 1000;
-  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .nav-container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: auto;
-  padding: 14px 24px;
+  padding: 16px 24px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
-.nav-brand {
+/* Logo */
+.logo {
+  font-size: 20px;
   font-weight: 700;
-  font-size: 1.05rem;
 }
 
+/* Nav links */
 .nav-links {
-  list-style: none;
   display: flex;
-  gap: 26px;
-  margin-left: auto; /* pushes links to the right */
-  
+  gap: 32px;
+  list-style: none;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: var(--dark);
-  font-weight: 600;
-  transition: color 0.3s;
-  padding: 10px;
+  color: #1f2937;
+  font-weight: 500;
 }
+
+/* Hamburger (hidden on desktop) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #1f2937;
+  border-radius: 2px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: #f8fafc;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 0;
+
+    /* hidden by default */
+    transform: translateY(-120%);
+    transition: transform 0.3s ease;
+  }
+
+  .nav-links.active {
+    transform: translateY(0);
+  }
+}
+
 
 .nav-links a:hover {
   color: white;
@@ -417,15 +459,26 @@ button {
 
 <nav>
   <div class="nav-container">
-    <div class="nav-brand">Benjamin's Portfolio</div>
+    <!-- Logo / Name -->
+    <div class="logo">
+      Benjamin Sam
+    </div>
 
-    <ul class="nav-links">
+    <!-- Navigation Links -->
+    <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+
+    <!-- Hamburger -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </div>
 </nav>
 
@@ -661,6 +714,23 @@ button {
 
   reveals.forEach(r => observer.observe(r));
 </script>
+
+<script>
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("navLinks");
+
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+
+  // Close menu when clicking a link (mobile UX polish)
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+    });
+  });
+</script>
+
 
 </body>
 </html>
