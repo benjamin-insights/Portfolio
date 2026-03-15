@@ -2,735 +2,302 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Benjamin Sam | Data Analyst Portfolio</title>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#050308',
+            card: 'rgba(20, 12, 34, 0.78)',
+            line: 'rgba(168, 85, 247, 0.18)',
+            text: '#f5f3ff',
+            muted: '#c4b5fd',
+            primary: '#a855f7',
+            secondary: '#7c3aed',
+            accent: '#c084fc'
+          },
+          boxShadow: {
+            purpleGlow: '0 0 30px rgba(168, 85, 247, 0.28)',
+            softPurple: '0 12px 40px rgba(76, 29, 149, 0.35)'
+          },
+          backgroundImage: {
+            radialPurple: 'radial-gradient(circle at top, rgba(168,85,247,0.24), transparent 38%)',
+            heroGlow: 'radial-gradient(circle at center, rgba(192,132,252,0.22), transparent 45%)'
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    :root {
-      --primary: #2563eb;
-      --bg: #f8fafc;
-      --dark: #0f172a;
-      --muted: #64748b;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     html {
-      scroll-behavior: smooth; /* native smooth scroll */
+      scroll-behavior: smooth;
     }
-
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--dark);
-      line-height: 1.7;
+      background:
+        radial-gradient(circle at top left, rgba(168,85,247,0.20), transparent 28%),
+        radial-gradient(circle at top right, rgba(124,58,237,0.16), transparent 24%),
+        linear-gradient(180deg, #050308 0%, #08050f 35%, #040208 100%);
+      color: #f5f3ff;
+      font-family: Inter, system-ui, sans-serif;
     }
-
-    /* ---------- NAV ---------- */
-/* Navbar base */
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: #f8fafc;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.nav-container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 16px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Logo */
-.logo {
-  font-size: 20px;
-  font-weight: 700;
-}
-
-/* Nav links */
-.nav-links {
-  display: flex;
-  gap: 32px;
-  list-style: none;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #1f2937;
-  font-weight: 500;
-}
-
-/* Hamburger (hidden on desktop) */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-}
-
-.hamburger span {
-  width: 25px;
-  height: 3px;
-  background: #1f2937;
-  border-radius: 2px;
-}
-
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 70px;
-    right: 0;
-    background: #f8fafc;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 24px 0;
-
-    /* hidden by default */
-    transform: translateY(-120%);
-    transition: transform 0.3s ease;
-  }
-
-  .nav-links.active {
-    transform: translateY(0);
-  }
-}
-
-
-.nav-links a:hover {
-  color: white;
-  padding: 10px;
-  background-color: dodgerblue;
-  border-radius: 5px;
-  transition: color 0.3s;
-}
-
-
-    /* ---------- HERO ---------- */
-    header {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      align-items: center;
-      gap: 40px;
-      padding: 120px 10%;
-      background: linear-gradient(120deg, #eff6ff, #ffffff);
+    .glass {
+      background: rgba(20, 12, 34, 0.72);
+      border: 1px solid rgba(192,132,252,0.12);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
-
-    header img {
-      width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    .section-title {
+      background: linear-gradient(90deg, #ffffff, #d8b4fe, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-
-    header h1 {
-      font-size: 3.2rem;
-      margin-bottom: 10px;
-    }
-
-    header span {
-      color: var(--primary);
-    }
-
-    header p {
-      color: var(--muted);
-      max-width: 520px;
-      margin-bottom: 30px;
-      font-size: 1.1rem;
-    }
-
-    .cta {
-      display: inline-block;
-      background: var(--primary);
-      color: white;
-      padding: 14px 30px;
-      border-radius: 999px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: transform .2s, box-shadow .2s;
-    }
-
-    .cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(37,99,235,0.35);
-    }
-
-    /* ---------- SECTIONS ---------- */
-    section {
-      padding: 90px 10%;
-    }
-
-    h2 {
-      font-size: 2.2rem;
-      margin-bottom: 40px;
-      text-align: center;
-    }
-
-    /* ---------- ABOUT ---------- */
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .about img {
-      width: 100%;
-      border-radius: 18px;
-    }
-
-    .about p {
-      color: var(--muted);
-      font-size: 1.05rem;
-    }
-
-    /* ---------- SKILLS ---------- */
-    .skills {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-    }
-
-    .skill {
-      background: white;
-      padding: 20px;
-      border-radius: 14px;
-      text-align: center;
-      font-weight: 600;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-      transition: transform .2s;
-    }
-
-    .skill:hover {
-      transform: translateY(-4px);
-    }
-
-    /* ---------- PROJECTS ---------- */
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-
-    .project {
-      background: white;
-      border-radius: 18px;
+    .purple-border {
+      position: relative;
       overflow: hidden;
-      box-shadow: 0 12px 25px rgba(0,0,0,0.08);
-      transition: transform .25s;
     }
-
-    .project:hover {
-      transform: translateY(-6px);
+    .purple-border::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(168,85,247,0.55), rgba(255,255,255,0.04), rgba(192,132,252,0.25));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
     }
-
-    .project img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
+    .spotlight:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(124,58,237,0.28);
+      border-color: rgba(192,132,252,0.26);
     }
-
-    .project-content {
-      padding: 20px;
+    .nav-blur {
+      background: rgba(5, 3, 8, 0.72);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
-
-    .project-content h3 {
-      margin-bottom: 10px;
-    }
-
-    .project-content p {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    /* ---------- CONTACT ---------- */
-    .contact {
-      text-align: center;
-    }
-
-    .contact p {
-      color: var(--muted);
-      font-size: 1.05rem;
-    }
-
-    footer {
-      padding: 30px;
-      text-align: center;
-      color: var(--muted);
-    }
-
-    /* ---------- ANIMATIONS ---------- */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ---------- RESPONSIVE ---------- */
-    @media (max-width: 900px) {
-      header {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .about {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    form {
-  max-width: 500px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-input, textarea {
-  padding: 14px;
-  border-radius: 10px;
-  border: 1px solid #cbd5e1;
-  font-family: inherit;
-  font-size: 1rem;
-}
-
-input:focus, textarea:focus {
-  outline: none;
-  border-color: var(--primary);
-}
-
-button {
-  border: none;
-  cursor: pointer;
-}
-
-.skills {
-  display: grid;
-  grid-template-columns: repeat(4, 160px); /* exactly 4 per row */
-  justify-content: center;                 /* center the whole grid */
-  gap: 24px;
-}
-
-
-.skill {
-  background: white;
-  padding: 24px 20px;
-  border-radius: 16px;
-  text-align: center;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.skill img {
-  width: 42px;
-  height: 42px;
-  margin-bottom: 10px;
-}
-
-.skill span {
-  display: block;
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-
-.skill:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 18px 35px rgba(0,0,0,0.08);
-}
-
-@media (max-width: 900px) {
-  .skills {
-    grid-template-columns: repeat(2, 160px);
-  }
-}
-
-@media (max-width: 480px) {
-  .skills {
-    grid-template-columns: 1fr;
-  }
-}
-.experience-card {
-  max-width: 900px;
-  margin: auto;
-  background: white;
-  padding: 32px;
-  border-radius: 20px;
-  box-shadow: 0 14px 30px rgba(0,0,0,0.08);
-}
-
-.experience-header {
-  margin-bottom: 20px;
-}
-
-.experience-header h3 {
-  font-size: 1.4rem;
-  margin-bottom: 6px;
-}
-
-.experience-header span {
-  font-weight: 600;
-  color: var(--primary);
-}
-
-.experience-duration {
-  color: var(--muted);
-  font-size: 0.95rem;
-  margin-top: 4px;
-}
-
-.experience-role {
-  margin-bottom: 16px;
-  color: var(--muted);
-}
-
-.experience-points {
-  list-style: none;
-  padding-left: 0;
-}
-
-.experience-points li {
-  position: relative;
-  padding-left: 22px;
-  margin-bottom: 12px;
-  color: var(--dark);
-  font-size: 0.95rem;
-}
-
-.experience-points li::before {
-  content: "▸";
-  position: absolute;
-  left: 0;
-  color: var(--primary);
-  font-weight: bold;
-}
-
-.social-icons {
-  display: flex;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.social-icons a {
-  font-size: 22px;
-  color: #2b2b2b;
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.social-icons a:hover {
-  transform: translateY(-2px);
-  color: #2563eb; /* blue accent */
-}
-
-
-
-
   </style>
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-/>
-
 </head>
 <body>
-
-<nav>
-  <div class="nav-container">
-    <!-- Logo / Name -->
-    <div class="logo">
-      Benjamin Sam
+  <header class="fixed top-0 left-0 w-full z-50 border-b border-white/5 nav-blur">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#home" class="text-xl md:text-2xl font-bold tracking-wide text-white">Benjamin<span class="text-primary">.</span></a>
+      <nav class="hidden md:flex items-center gap-8 text-sm text-violet-100/80">
+        <a href="#about" class="hover:text-primary transition">About</a>
+        <a href="#skills" class="hover:text-primary transition">Skills</a>
+        <a href="#projects" class="hover:text-primary transition">Projects</a>
+        <a href="#experience" class="hover:text-primary transition">Journey</a>
+        <a href="#contact" class="hover:text-primary transition">Contact</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-white text-2xl">☰</button>
     </div>
-
-    <!-- Navigation Links -->
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-
-    <!-- Hamburger -->
-    <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
+    <div id="mobileMenu" class="hidden md:hidden px-6 pb-4 text-violet-100/80 space-y-3 border-t border-white/5">
+      <a href="#about" class="block">About</a>
+      <a href="#skills" class="block">Skills</a>
+      <a href="#projects" class="block">Projects</a>
+      <a href="#experience" class="block">Journey</a>
+      <a href="#contact" class="block">Contact</a>
     </div>
-  </div>
-</nav>
+  </header>
 
-
-<header>
-  <div>
-    <h1>Hi, I’m <span>Benjamin P</span></h1>
-    <p>
-      Aspiring Data Analyst with a strong foundation in SQL, Python, Excel,
-      Power BI, and Statistics. Focused on building clarity from complexity.
-    </p>
-    <a href="#projects" class="cta">View My Work</a>
-  </div>
-
-  <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="Data analytics">
-</header>
-
-<section id="about" class="reveal">
-  <h2>About Me</h2>
-  <div class="about">
-    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df" alt="Workspace">
-    <p>
-      I’m a Data Analyst at ClearQuote with hands-on experience in the automotive domain, where I translate raw data into clear operational insights and dependable reporting. I began as an intern and, through persistent learning and measurable contributions, transitioned into a full-time analyst role within my first year an experience that sharpened both my technical skills and my capacity to manage cross-functional work.
-        <br>
-        My core competencies include SQL, Python (Pandas, NumPy), Excel, Power BI, and data cleaning & visualization. I’m especially passionate about making complex datasets intuitive through dashboards and repeatable analytics processes.
-        <br>
-        I’m always seeking opportunities to learn more, collaborate on impactful projects, and connect with professionals and teams tackling real-world data challenges. Let’s connect!
-    </p>
-  </div>
-</section>
-
-<section id="skills" class="reveal">
-  <h2>Skills</h2>
-
-  <div class="skills">
-
-    <div class="skill">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
-      <span>Python</span>
+  <section id="home" class="min-h-screen flex items-center relative overflow-hidden pt-28">
+    <div class="absolute inset-0 bg-radialPurple"></div>
+    <div class="absolute top-24 left-1/2 -translate-x-1/2 w-[38rem] h-[38rem] rounded-full bg-heroGlow blur-3xl opacity-80"></div>
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center relative z-10">
+      <div>
+        <p class="uppercase tracking-[0.35em] text-sm text-accent mb-4">Data Analyst Portfolio</p>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-white">
+          Turning raw data into <span class="text-primary">clear insights</span> and business impact.
+        </h1>
+        <p class="mt-6 text-lg text-violet-100/75 max-w-xl leading-8">
+          I’m Benjamin Sam — an aspiring Data Analyst building projects in SQL, Python, Power BI, Excel, and statistics. I enjoy transforming messy datasets into dashboards, trends, and stories that help people make better decisions.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="#projects" class="px-6 py-3 rounded-full bg-primary text-white font-medium shadow-purpleGlow hover:scale-105 transition">View Projects</a>
+          <a href="#contact" class="px-6 py-3 rounded-full border border-violet-400/25 text-violet-100 hover:border-primary hover:text-white transition">Let’s Connect</a>
+        </div>
+      </div>
+      <div class="glass purple-border rounded-3xl p-8 shadow-softPurple">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="rounded-2xl bg-black/20 border border-violet-400/10 p-5">
+            <p class="text-violet-200/70 text-sm">Core Stack</p>
+            <h3 class="text-xl font-semibold mt-2">SQL • Python • Power BI</h3>
+          </div>
+          <div class="rounded-2xl bg-black/20 border border-violet-400/10 p-5">
+            <p class="text-violet-200/70 text-sm">Focus</p>
+            <h3 class="text-xl font-semibold mt-2">Analytics + Storytelling</h3>
+          </div>
+          <div class="rounded-2xl bg-black/20 border border-violet-400/10 p-5 col-span-2">
+            <p class="text-violet-200/70 text-sm mb-2">Current Direction</p>
+            <div class="w-full h-3 rounded-full bg-white/10 overflow-hidden">
+              <div class="h-full w-[78%] bg-gradient-to-r from-secondary via-primary to-accent"></div>
+            </div>
+            <p class="mt-3 text-violet-100/70 text-sm">Learning data analytics deeply and moving toward data engineering step by step.</p>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="skill">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL">
-      <span>SQL</span>
+  <section id="about" class="py-24">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+      <div class="glass purple-border rounded-3xl p-8 shadow-softPurple">
+        <h2 class="text-3xl md:text-4xl font-bold section-title mb-6">About Me</h2>
+        <p class="text-violet-100/78 leading-8">
+          I’m building a strong base in analytics by practicing real projects, exploring datasets, and learning how businesses use data to solve problems. I like clean dashboards, structured thinking, and explaining findings in a simple way.
+        </p>
+        <p class="text-violet-100/72 leading-8 mt-4">
+          My goal is to start as a Data Analyst in a top IT company and grow into a Data Engineer over time. I’m focused on both technical growth and professional communication so I can become reliable in real teams.
+        </p>
+      </div>
+      <div class="grid gap-4">
+        <div class="glass purple-border rounded-2xl p-6">
+          <h3 class="text-xl font-semibold text-white mb-2">What I enjoy</h3>
+          <p class="text-violet-100/75">Cleaning data, exploring patterns, building dashboards, and turning numbers into practical insights.</p>
+        </div>
+        <div class="glass purple-border rounded-2xl p-6">
+          <h3 class="text-xl font-semibold text-white mb-2">What I’m improving</h3>
+          <p class="text-violet-100/75">Advanced SQL, Python for analysis, statistics, business thinking, and data communication.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="skill">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas">
-      <span>Pandas</span>
+  <section id="skills" class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold section-title text-center mb-12">Skills & Toolkit</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass purple-border rounded-3xl p-7 transition duration-300 spotlight">
+          <h3 class="text-xl font-semibold mb-4 text-white">Data Analysis</h3>
+          <p class="text-violet-100/75 leading-7">SQL queries, joins, filtering, aggregation, exploratory analysis, KPI tracking, and pattern discovery.</p>
+        </div>
+        <div class="glass purple-border rounded-3xl p-7 transition duration-300 spotlight">
+          <h3 class="text-xl font-semibold mb-4 text-white">Visualization</h3>
+          <p class="text-violet-100/75 leading-7">Power BI dashboards, Excel reporting, charts, trends, summaries, and simple storytelling with data.</p>
+        </div>
+        <div class="glass purple-border rounded-3xl p-7 transition duration-300 spotlight">
+          <h3 class="text-xl font-semibold mb-4 text-white">Programming</h3>
+          <p class="text-violet-100/75 leading-7">Python basics, pandas, data cleaning, transformation, and preparing datasets for analysis.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="skill">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy">
-      <span>NumPy</span>
+  <section id="projects" class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold section-title text-center mb-12">Featured Projects</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass purple-border rounded-3xl p-7 transition duration-300 spotlight">
+          <p class="text-accent text-sm mb-3">SQL + Business Analysis</p>
+          <h3 class="text-2xl font-semibold text-white mb-4">Sales Analysis Project</h3>
+          <p class="text-violet-100/75 leading-7">Explored sales performance, product trends, and key revenue drivers using SQL queries and structured reporting.</p>
+        </div>
+        <div class="glass purple-border rounded-3xl p-7 transition duration-300 spotlight">
+          <p class="text-accent text-sm mb-3">Python + Cleaning</p>
+          <h3 class="text-2xl font-semibold text-white mb-4">Data Cleaning Workflow</h3>
+          <p class="text-violet-100/75 leading-7">Worked with raw datasets, transformed columns, handled inconsistencies, and prepared analysis-ready data using Python.</p>
+        </div>
+        <div class="glass purple-border rounded-3xl p-7 transition duration-300 spotlight">
+          <p class="text-accent text-sm mb-3">Dashboarding</p>
+          <h3 class="text-2xl font-semibold text-white mb-4">Power BI Dashboard</h3>
+          <p class="text-violet-100/75 leading-7">Built interactive dashboards to present metrics clearly, making it easier to identify patterns and business insights.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="skill">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="Excel">
-      <span>Excel</span>
+  <section id="experience" class="py-24">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold section-title text-center mb-12">My Journey</h2>
+      <div class="space-y-6">
+        <div class="glass purple-border rounded-3xl p-6">
+          <p class="text-accent text-sm">Foundation Stage</p>
+          <h3 class="text-xl font-semibold text-white mt-2">Learning core analytics tools</h3>
+          <p class="text-violet-100/75 mt-3 leading-7">Focused on SQL, Excel, Python, and basic statistics to build a strong understanding of how data is structured and analyzed.</p>
+        </div>
+        <div class="glass purple-border rounded-3xl p-6">
+          <p class="text-accent text-sm">Project Stage</p>
+          <h3 class="text-xl font-semibold text-white mt-2">Applying concepts through projects</h3>
+          <p class="text-violet-100/75 mt-3 leading-7">Practicing with real datasets, building dashboards, and improving how I present insights in a professional way.</p>
+        </div>
+        <div class="glass purple-border rounded-3xl p-6">
+          <p class="text-accent text-sm">Growth Stage</p>
+          <h3 class="text-xl font-semibold text-white mt-2">Moving toward analyst roles and beyond</h3>
+          <p class="text-violet-100/75 mt-3 leading-7">Preparing for placements, strengthening communication skills, and gradually expanding toward data engineering concepts.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="skill">
-      <img src="https://img.icons8.com/color/96/power-bi.png" alt="Power BI">
-      <span>Power BI</span>
-    </div>
-
-    <div class="skill">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
-      <span>Git</span>
-    </div>
-
-    <div class="skill">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
-      <span>GitHub</span>
-    </div>
-
-  </div>
-</section>
-
-<section id="experience" class="reveal">
-  <h2>Experience</h2>
-
-  <div class="experience-card">
-    <div class="experience-header">
-      <h3>Data Analyst – Automotive Domain</h3>
-      <span>ClearQuote</span>
-      <p class="experience-duration">
-        June 2024 – Present
-      </p>
-    </div>
-
-    <div class="experience-body">
-      <p class="experience-role">
-        Started as a <strong>Data Analyst Intern</strong> for 3 months and transitioned
-        into a <strong>Full-Time Data Analyst</strong> role from the 4th month onward.
-      </p>
-
-      <ul class="experience-points">
-        <li>
-          Worked on the <strong>UVeye project</strong>, handling automotive data workflows
-          across multiple servers.
-        </li>
-        <li>
-          Downloaded raw data from external servers, segregated datasets,
-          and uploaded validated data to the internal home server.
-        </li>
-        <li>
-          Managed team operations including task coordination and progress tracking.
-        </li>
-        <li>
-          Prepared and shared <strong>weekly annotation quality and quantity reports</strong>
-          to ensure data accuracy and consistency.
-        </li>
-        <li>
-          Actively participated in <strong>client meetings</strong> to discuss data quality,
-          project status, and delivery expectations.
-        </li>
-        <li>
-          Supporting the <strong>Customer Success Management (CSM)</strong> team for the
-          past 2 months to improve client communication and issue resolution.
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-
-<section id="projects" class="reveal">
-  <h2>Projects</h2>
-
-  <div class="projects">
-
-    <div class="project">
-      <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7" alt="Sales Analysis">
-      <div class="project-content">
-        <h3>Sales Analysis Project</h3>
-        <p>
-          Cleaned and analyzed sales data using Python and Pandas to identify
-          trends, seasonal patterns, and performance gaps.
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="glass purple-border rounded-3xl p-10 shadow-softPurple text-center">
+        <h2 class="text-3xl md:text-4xl font-bold section-title mb-5">What makes me different</h2>
+        <p class="max-w-3xl mx-auto text-violet-100/78 leading-8">
+          I’m not just learning tools — I’m learning how to think with data, communicate clearly, and keep improving consistently. My focus is on building real skills that can create value in actual business environments.
         </p>
       </div>
     </div>
+  </section>
 
-    <div class="project">
-      <img src="https://images.unsplash.com/photo-1543286386-2e659306cd6c" alt="EV Market">
-      <div class="project-content">
-        <h3>Indian EV Market Analysis</h3>
-        <p>
-          Exploratory data analysis on the Indian electric vehicle market
-          to understand adoption trends, growth drivers, and regional demand.
-        </p>
+  <section id="contact" class="py-24">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="glass purple-border rounded-3xl p-10 shadow-softPurple">
+        <h2 class="text-3xl md:text-4xl font-bold section-title text-center mb-8">Let’s Connect</h2>
+        <div class="grid md:grid-cols-2 gap-8 items-start">
+          <div>
+            <p class="text-violet-100/78 leading-8">I’m open to internships, entry-level opportunities, collaborations, and conversations around analytics, dashboards, and data projects.</p>
+            <div class="mt-6 space-y-3 text-violet-100/80">
+              <p>Email: yourname@email.com</p>
+              <p>GitHub: #</p>
+              <p>Location: India</p>
+            </div>
+          </div>
+          <form class="space-y-4">
+            <input type="text" placeholder="Your Name" class="w-full p-4 rounded-2xl bg-black/25 border border-violet-400/15 text-white outline-none focus:border-primary" />
+            <input type="email" placeholder="Your Email" class="w-full p-4 rounded-2xl bg-black/25 border border-violet-400/15 text-white outline-none focus:border-primary" />
+            <textarea rows="5" placeholder="Your Message" class="w-full p-4 rounded-2xl bg-black/25 border border-violet-400/15 text-white outline-none focus:border-primary"></textarea>
+            <button class="w-full py-4 rounded-2xl bg-primary hover:bg-secondary transition text-white font-medium shadow-purpleGlow">Send Message</button>
+          </form>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="project">
-      <img src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72" alt="Automotive Data">
-      <div class="project-content">
-        <h3>Automotive Market Insights</h3>
-        <p>
-          Analyzed automotive industry data to derive insights on pricing,
-          demand patterns, and customer behavior using SQL and Power BI.
-        </p>
-      </div>
-    </div>
+  <footer class="py-8 text-center text-violet-200/50 border-t border-white/5">
+    © 2026 Benjamin Sam. Built with a black and purple data aesthetic.
+  </footer>
 
-  </div>
-</section>
-
-
-<section id="contact" class="reveal contact">
-  <h2>Contact Me</h2>
-
-  <div class="contact-icons" style="text-align:center; margin-bottom:20px;">
-    <a href="https://www.linkedin.com/in/benjamin-p-415077357/" target="_blank">
-      <img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="LinkedIn Profile">
-    </a>
-  </div>
-
-  <form id="contact-form">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-
-    <button type="submit" class="cta">Send Message</button>
-    <p id="status" style="margin-top:15px;"></p>
-  </form>
-</section>
-
-
-
-<footer>
-  © 2026 Benjamin Sam
-</footer>
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
-<script>
-  (function(){
-    emailjs.init("");
-  })();
-
-  document.getElementById("contact-form").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    const status = document.getElementById("status");
-    status.innerText = "Sending...";
-
-    emailjs.sendForm(
-      "YOUR_SERVICE_ID",
-      "YOUR_TEMPLATE_ID",
-      this
-    ).then(() => {
-      status.innerText = "Message sent successfully!";
-      status.style.color = "green";
-      this.reset();
-    }, () => {
-      status.innerText = "Something went wrong. Please try again.";
-      status.style.color = "red";
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
     });
-  });
-</script>
 
-<script>
-  // Scroll reveal animation
-  const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.animate(
+            [
+              { opacity: 0, transform: 'translateY(30px)' },
+              { opacity: 1, transform: 'translateY(0)' }
+            ],
+            { duration: 700, fill: 'forwards', easing: 'ease-out' }
+          );
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-      }
+    document.querySelectorAll('section, .spotlight, .glass').forEach(el => {
+      el.style.opacity = 0;
+      observer.observe(el);
     });
-  }, { threshold: 0.15 });
-
-  reveals.forEach(r => observer.observe(r));
-</script>
-
-<script>
-  const hamburger = document.getElementById("hamburger");
-  const navLinks = document.getElementById("navLinks");
-
-  hamburger.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-  });
-
-  // Close menu when clicking a link (mobile UX polish)
-  document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", () => {
-      navLinks.classList.remove("active");
-    });
-  });
-</script>
-
-
+  </script>
 </body>
 </html>
